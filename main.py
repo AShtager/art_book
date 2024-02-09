@@ -1,15 +1,16 @@
 def sorted_page(*text):
+
     count_line = {}
-    number_line = 1
     count = 0 
-    for i in text:
-        with open(i, encoding="utf-8") as f:
+
+    for page in text:
+        with open(page, encoding="utf-8") as f:
             for i in f:
                 count += 1
-            count_line[count] = f"{number_line}.txt"
+            count_line[count] = page
             count = 0
-            number_line += 1
     line_sorted = dict(sorted(count_line.items()))
+   
     for i in line_sorted.items():
         with open(i[1], encoding='utf-8') as f_1, open("book.txt", "a", encoding="utf-8") as f_2:
             f_2.write(i[1])
